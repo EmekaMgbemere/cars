@@ -1,17 +1,22 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const { boolean } = require("webidl-conversions");
 
 const userSchema = new mongoose.Schema({
-  personalID: mongoose.Schema.ObjectId, 
-  storeID: mongoose.Schema.ObjectId, 
-  firstname: String,
-  lastname: String,
-  phonenumber: Number,
+  fullname: String,
   email: String,
+  phoneNumber: String,
   password: String,
-  userType: String,
-  secretKey: String,
-  avatar: String,
-  address: String
+  streetAddress: String,
+  preferredContactMethod: String,
+  selectedLgas:String,
+  state: String,
+  selectedstate: String,
+  privacyPolicy: Boolean, 
+  location:String, 
+  siteusertype:String,
+  instagram:String,
+  tiktok:String,
+  facebook:String,
 }, 
 {
  modified_at:{type:Number,default:()=>Date.now()}

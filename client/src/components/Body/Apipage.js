@@ -1,9 +1,13 @@
 import React, { createContext } from 'react';
 import Data from "../../components/mockDATA.json";
+import StatelgasContext from "../../components/statelgas.json";
+
 
  export const CreatedApi = createContext("https://jsonplaceholder.typicode.com/users");
  export const defaultapi = createContext('http://localhost:6969')
  export const MockData = createContext(Data);
+ export const statelgas = createContext(StatelgasContext);
+
  const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -26,9 +30,9 @@ import Data from "../../components/mockDATA.json";
     slidesToSlide: 1  
   }
 };
-export const Responsiveness = createContext(responsive);
 
-export const contextObject = { CreatedApi, defaultapi, MockData, Responsiveness };
+export const responsiveData = createContext(responsive)
+
 
 export default function Apipage() {
 

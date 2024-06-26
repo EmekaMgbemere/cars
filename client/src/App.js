@@ -4,87 +4,86 @@ import CentralAdmin from "../src/components/Admin/CentralAdmin";
 import CentralAdminLeft from "../src/components/Admin/CentralAdminLeft";
 import CentralAdminRight from "../src/components/Admin/CentralAdminRight";
 import CentralAdminTop from "../src/components/Admin/CentralAdminTop";
-import Login from "../src/components/Admin/Login";
-import Apipage from "../src/components/Body/Apipage";
 import Bestselling from "../src/components/Body/Bestselling";
 import Hero from "../src/components/Body/Hero";
 import Home from "../src/components/Body/Home";
 import ProductCategory from "../src/components/Body/ProductCategory";
-import Fresh from "./components/Body/Fresh";
 import NoPage from "../src/components/Body/NoPage";
 import Trending from "../src/components/Body/Trending";
 import Nav from "../src/components/Nav/Nav";
-import ShopAdminLeft from "../src/components/Shop/ShopAdminLeft/ShopAdminLeft";
-import ShopAdminRight from "../src/components/Shop/ShopAdminRight/ShopAdminRight";
-import Shopadmin from "../src/components/Shop/Shopadmin";
-import Shopadmindashboard from "../src/components/Shop/Shopadmindashboard";
-import Shopdisplay from "../src/components/Shop/Shopdisplay";
-import { CreatedApi, MockData, Responsiveness, contextObject } from '../src/components/Body/Apipage';
+import Shopdashboard from "../src/components/Shop/Shopdashboard";
 import CentralAdminForm from './components/Admin/CentralAdminForm';
 import Footer from './components/Footer/Footer';
 import Blog from './components/Menu/Blog';
 import CustomerTestimonials from './components/Body/CustomerTestimonials';
+import Newarrivals from './components/Body/Newarrivals';
 import FeaturedBrands from './components/Body/FeaturedBrands';
 import Shops from './components/Body/Shops';
 import SpecialOffers from './components/Body/SpecialOffers';
+import CarForm from './components/Body/CarForm';
 import Users from './components/Menu/Users';
-import Test from './components/Body/Test';
+import PrivacyPolicy from './components/User/PrivacyPolicy';
+import UserInfo from './components/User/UserInfo';
+import Register from './components/User/Register';
+import UserDashboard from './components/User/UserDashboard/UserDashboard';
+import Login, { NewLoginIDContext } from './components/User/Login';
+import Apipage from './components/Body/Apipage';
+import ClickedProduct from '../../client/src/components/Body/ClickedProduct';
 
+import Test from './components/Body/Test';
 import './App.css';
 
 import './Scss.scss'
 
+import 'atropos/css'
+
+
 function App() {
 
+  // const LoginID = useContext(NewLoginID);
 
-  const mockData = useContext(MockData);
+  const LoginID = useContext(NewLoginIDContext);
 
-  const createdApi = useContext(CreatedApi);
-
-  const apiresp = useContext(Responsiveness);
 
 
   return (
     <div className="App">
         <BrowserRouter>
-              <contextObject.Responsiveness.Provider value={apiresp} >
-                  <contextObject.MockData.Provider value={mockData} >
-                      <contextObject.CreatedApi.Provider value={createdApi} >
-                        <Routes>
-                                <Route path="/" element={<Home />} />
-                                <Route path="/centraladminform" element={<CentralAdminForm />} />
-                                <Route path="/centraladmin" element={<CentralAdmin />} />
-                                <Route path="/centraladminleft" element={<CentralAdminLeft />} />
-                                <Route path="/centraladminright" element={<CentralAdminRight />} />
-                                <Route path="/centraladmintop" element={<CentralAdminTop />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/apipage" element={<Apipage />} />
-                                <Route path="/bestselling" element={<Bestselling />} />
-                                <Route path="/hero" element={<Hero />} />
-                                <Route path="/fresh" element={<Fresh />} />
-                                <Route path="/trending" element={<Trending />} />
-                                <Route path="/nav" element={<Nav />} />
-                                <Route path="/shopadminleft" element={<ShopAdminLeft />} />
-                                <Route path="/shopadminright" element={<ShopAdminRight />} />
-                                <Route path="/shopadmin" element={<Shopadmin />} />
-                                <Route path="/shopadmindashboard" element={<Shopadmindashboard />} />
-                                <Route path="/shopdisplay" element={<Shopdisplay />} />
-                                <Route path="/footer" element={<Footer />} />
-                                <Route path="/blog" element={<Blog />} />
-                                <Route path="/customertestimonials" element={<CustomerTestimonials />} />
-                                <Route path="/featuredbrands" element={<FeaturedBrands />} />
-                                <Route path="/shops" element={<Shops />} />
-                                <Route path="/specialoffers" element={<SpecialOffers />} />
-                                <Route path="/users" element={<Users />} />
-                                <Route path="/test" element={<Test />} />
-                                <Route path="/productcategory" element={<ProductCategory />} />
-                                <Route path="/nopage" element={<NoPage />} />
-                        </Routes>
-                    </contextObject.CreatedApi.Provider>
-                  </contextObject.MockData.Provider>
-              </contextObject.Responsiveness.Provider>
-        </BrowserRouter>
-        
+            <NewLoginIDContext.Provider value={{LoginID}}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/centraladminform" element={<CentralAdminForm />} />
+                    <Route path="/userdashboard" element={<UserDashboard />} />
+                    <Route path="/centraladmin" element={<CentralAdmin />} />
+                    <Route path="/centraladminleft" element={<CentralAdminLeft />} />
+                    <Route path="/centraladminright" element={<CentralAdminRight />} />
+                    <Route path="/centraladmintop" element={<CentralAdminTop />} />
+                    <Route path="/apipage" element={<Apipage />} />
+                    <Route path="/hero" element={<Hero />} />
+                    <Route path="/trending" element={<Trending />} />
+                    <Route path="/nav" element={<Nav />} />
+                    <Route path="/shopdashboard" element={<Shopdashboard />} />
+                    <Route path="/footer" element={<Footer />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/newarrivals" element={<Newarrivals />} />
+                    <Route path="/customertestimonials" element={<CustomerTestimonials />} />
+                    <Route path="/featuredbrands" element={<FeaturedBrands />} />
+                    <Route path="/shops" element={<Shops />} />
+                    <Route path="/specialoffers" element={<SpecialOffers />} />
+                    <Route path="/users" element={<Users />} />
+                    <Route path="/productcategory" element={<ProductCategory />} />
+                    <Route path="/carform" element={<CarForm />} />
+                    <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+                    <Route path="/userinfo" element={<UserInfo />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/test" element={<Test />} />
+                    <Route path="/bestselling" element={<Bestselling />} />
+                    <Route path="/clickedproduct/:id" element={<ClickedProduct />} />
+                    <Route path="/nopage" element={<NoPage />} />
+                </Routes>
+            </NewLoginIDContext.Provider>
+        </BrowserRouter>        
     </div>
   );
 }

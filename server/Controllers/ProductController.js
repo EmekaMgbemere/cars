@@ -1,45 +1,4 @@
-const express = require("express");
-const app = express();
-const cors = require('cors');
-const Products = require('../models/Products');
-const dotenv = require('dotenv');
-var store = require('store');
-const multer = require("multer");
-var path = require('path');
-const bodyParser = require('body-parser');
-
-
-dotenv.config();
-app.use(cors());
-
-require('dotenv').config();
-
-app.set("view engine", "ejs");
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
-
-app.use(express.static(path.join(__dirname, 'uploads')));
-app.use(express.static('public'));
-
-// const jsonParser = bodyParser.json({ extended: false });
-
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ parameterLimit:50000, extended: true, limit: '50mb' })); 
-
-
-  const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "uploads");
-    },
-    filename: function (req, file, cb) {
-      console.log(req.file);
-      const uniqueSuffix = Date.now();
-      cb(null, file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname));
-    }
-  });
-  
-  const upload = multer({ storage: storage });
-
+const Products = require('../../server/models/Products');
 
 const ProductRegistry = async (req, res) =>{
   const { productID, productCategory,avatar, productName, productDescription, price, productImages , stockAvailability, productReviews} = req.body;

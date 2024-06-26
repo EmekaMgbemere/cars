@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const User = require('../models/User');
 
 const tokenSchema = new mongoose.Schema({
-  user: {type: Number},
+  user: {type: String},
   token: {type: String}
 });
 

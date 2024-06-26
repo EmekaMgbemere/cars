@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import { contextObject } from '../Body/Apipage';
+import { defaultapi } from '../Body/Apipage';
 import Nav from '../Nav/Nav';
 
 function CentralAdminForm() {
 
-  const url = useContext(contextObject.defaultapi); 
+  const url = useContext(defaultapi); 
 
     const [data, setData] = useState({
         shopname:"",
